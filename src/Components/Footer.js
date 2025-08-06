@@ -5,9 +5,14 @@ import { Send, Mail, Map, MapPin, Phone } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="footer">
+      <div className="agency-logo">
+  
+        <span>Travel</span>Ease
+      </div> 
+      <br/><br/>
       <div className="footer-top">
         <div className="footer-logo">
-          <img src="./image/logo.png" alt="TravelEase Logo" />
+         
           
           <p>
             Your trusted partner in creating unforgettable travel experiences 
