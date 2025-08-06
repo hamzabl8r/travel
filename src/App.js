@@ -1,18 +1,15 @@
 import React from 'react'
-<<<<<<< HEAD
 import Navbar from './Components/Navbar'
-=======
 import Footer from './Components/Footer'
->>>>>>> 118298e6181261717238a8694417673ea00292cf
+import HeroSection from './Components/HeroSection'
+import BookingForm from './Components/BookingForm'
 
 const App = () => {
   return (
     <div>
-<<<<<<< HEAD
       <Navbar/>
-=======
+      <HeroSection/>
       <Footer/>
->>>>>>> 118298e6181261717238a8694417673ea00292cf
     </div>
   )
 }
