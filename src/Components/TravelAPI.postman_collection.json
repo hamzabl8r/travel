@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6",
+		"name": "Travel API (Booking.com)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search Hotel Locations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-rapidapi-key",
+						"value": "Dwe8OMJcUcG9oMGkVGjB1lYQ7ju4qwqaDAvYBnJkNKxAXVvSpc",
+						"type": "text",
+						"description": "Replace with your actual RapidAPI key."
+					},
+					{
+						"key": "x-rapidapi-host",
+						"value": "booking-com.p.rapidapi.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://booking-com.p.rapidapi.com/v1/hotels/search-locations?name=paris&locale=en-gb",
+					"protocol": "https",
+					"host": [
+						"booking-com",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"v1",
+						"hotels",
+						"search-locations"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "paris",
+							"description": "The city you want to search for (e.g., london, berlin)."
+						},
+						{
+							"key": "locale",
+							"value": "en-gb",
+							"description": "The language for the results."
+						}
+					]
+				},
+				"description": "Searches for hotel locations and returns a list of matching destinations."
+			},
+			"response": []
+		}
+	]
+}

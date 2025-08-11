@@ -7,14 +7,13 @@ const DestinationsPopup = ({ destinations, onSelectDestination, loading }) => {
         <div className="destinations-popup-container">
             <h4 className="popup-title">Destinations en vogue</h4>
             <div className="destinations-list">
-                {loading ? (
-                    <div className="loading-message">Loading suggestions...</div>
-                ) : destinations.length > 0 ? (
-                    destinations.map((dest, index) => (
+                {loading && <div className="loading-message">Loading suggestions...</div>}
+                {!loading && destinations.length > 0 && (
+                    destinations.map((dest) => (
                         <div
-                            key={index}
+                            key={dest.dest_id}
                             className="destination-item"
-                            onClick={() => onSelectDestination(dest.name)}
+                            onClick={() => onSelectDestination(dest)}
                         >
                             <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />
                             <div className="destination-text">
@@ -23,7 +22,8 @@ const DestinationsPopup = ({ destinations, onSelectDestination, loading }) => {
                             </div>
                         </div>
                     ))
-                ) : (
+                )}
+                {!loading && destinations.length === 0 && (
                     <div className="no-results">No destinations found.</div>
                 )}
             </div>

@@ -2,6 +2,7 @@
   "name": "travel",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://booking-com15.p.rapidapi.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",
     "@fortawesome/free-regular-svg-icons": "^7.0.0",
