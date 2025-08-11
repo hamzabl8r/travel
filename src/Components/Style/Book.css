@@ -1,0 +1,416 @@
+.booking-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #fff;
+  border: 4px solid #ffc107; /* Yellow border */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.form-input {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-right: 1px solid #ced4da;
+  flex: 1; /* Distributes space evenly */
+  min-width: 200px; /* Ensures inputs don't get too small */
+}
+
+.form-input:last-of-type {
+  border-right: none;
+}
+
+.form-input .svg-inline--fa { /* Targets FontAwesome icons */
+  color: #868e96;
+  margin-right: 10px;
+}
+
+.form-input input {
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  color: #495057;
+}
+
+.form-input input:focus {
+  outline: none;
+}
+
+.form-input span {
+  font-size: 16px;
+  color: #495057;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.form-input .clear-input {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 20px;
+  color: #868e96;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 150px;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .booking-form-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .form-input {
+    border-right: none;
+    border-bottom: 1px solid #ced4da;
+    margin-bottom: 10px;
+    min-width: unset;
+  }
+
+  .form-input:last-of-type {
+    border-bottom: 1px solid #ced4da; /* Add border to the last input */
+    margin-bottom: 10px;
+  }
+
+  .search-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Add these styles to your existing styles */
+.guests-popup-container {
+  position: absolute;
+  top: calc(100% + 10px); /* Position below the input field with some margin */
+  left: 50%;
+  transform: translate(25%,-3%); /* Center the popup horizontally */
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  z-index: 10;
+}
+
+.guests-counter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.guests-counter-row span {
+  font-size: 16px;
+  color: #495057;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.counter-controls button {
+  background: transparent;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.counter-controls button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.pet-toggle-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #495057;
+}
+
+/* Toggle switch styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #007bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.pet-info-links {
+  margin-top: 10px;
+}
+
+.pet-info-links p {
+  font-size: 12px;
+  color: #868e96;
+  margin-bottom: 5px;
+}
+
+.pet-info-links a {
+  font-size: 12px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.btn-terminer {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* date Picker */
+
+.date-picker-container {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 20px;
+  transform: translate(75%, -3%); /* Center the popup horizontally */
+}
+
+.date-picker-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #868e96;
+}
+
+.tab.active {
+  border-bottom-color: #007bff;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.calendar-grid-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.calendar-month {
+  flex: 1;
+}
+
+.month-title {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.weekdays,
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.weekdays span {
+  font-weight: bold;
+  color: #495057;
+  padding-bottom: 5px;
+}
+
+.calendar-day {
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px auto;
+}
+
+.calendar-day:hover {
+  background-color: #e9ecef;
+}
+
+.calendar-day.selected {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.flexible-dates-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option-btn {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.option-btn.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Destination */
+.destinations-popup-container {
+  position: absolute;
+  top: calc(100% + 10px);
+  transform: translate(40%, -3%);
+  left: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  z-index: 10;
+}
+
+.popup-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #868e96;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.destinations-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.destination-item:hover {
+  background-color: #f8f9fa;
+}
+
+.location-icon {
+  color: #007bff;
+  margin-right: 15px;
+  font-size: 18px;
+}
+
+.destination-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.destination-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #495057;
+  margin: 0;
+}
+
+.destination-country {
+  font-size: 14px;
+  color: #868e96;
+}

@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero-section {
+  background-image: url("../assets/djerba1.png");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content {
+  padding: 20px;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  transform: translate(10%,20%);
+}
+
+.Travel {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0074e8;
+}
+.Ease {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #67aff7;
+}
+
+/* Carousel.css */
+.carousel-container {
+  max-width: 400px;
+  height: auto;
+  width: 100%;
+  margin: 2rem auto;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translate(70%,20%);
+}
+
+.carousel-image-wrapper {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.carousel-controls button {
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.carousel-controls button:hover {
+  background-color: #555;
+  opacity: 0.8;
+}
+
+
+/* footer */
+
+.footer-hero{
+  transform: translateY(-60%);
+}

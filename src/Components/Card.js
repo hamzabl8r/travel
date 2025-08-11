@@ -1,116 +1,123 @@
-import React, { useEffect, useState } from "react";
-import "./Style/Card.css";
+import React, { useEffect, useState } from 'react';
+import './Style/Card.css';
 
-export default function Card() {
+function App() {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_KEY = "a56437826emsh8e1c7cb4bfb8cabp103ddajsn33826d272c12";
-
   useEffect(() => {
-    // Étape 1 : récupérer le destinationId avec les coordonnées (latitude & longitude)
-    const locationUrl = new URL(
-      "https://booking-com15.p.rapidapi.com/api/v1/hotels/locations"
-    );
-    locationUrl.search = new URLSearchParams({
-      latitude: "19.24232736426361",
-      longitude: "72.85841985686734",
-      locale: "en-us",
-    });
-
-    fetch(locationUrl, {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": API_KEY,
-        "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
-      },
-    })
-      .then((res) => res.json())
-      .then((locationData) => {
-        // console.log("Location data:", locationData);
-
-        if (!locationData || locationData.length === 0) {
-          throw new Error("Destination introuvable");
+    const fetchHotels = async () => {
+     
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const mockHotels = [
+        {
+          id: 1,
+          name: "Hôtel Majestueux",
+          image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+          address: "123 Avenue des Champs, Paris, France",
+          price: "189 €",
+          rating: 4.7,
+          description: "Un hôtel de luxe au cœur de Paris avec vue sur la Tour Eiffel"
+        },
+        {
+          id: 2,
+          name: "Résidence Océane",
+          image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+          address: "45 Boulevard de la Mer, Nice, France",
+          price: "145 €",
+          rating: 4.5,
+          description: "Profitez de la Méditerranée depuis votre chambre"
+        },
+        {
+          id: 3,
+          name: "Château Montagne",
+          image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+          address: "Route des Alpes, Chamonix, France",
+          price: "220 €",
+          rating: 4.9,
+          description: "Retraite alpine avec spa et accès direct aux pistes"
+        },
+        {
+          id: 4,
+          name: "Urban Oasis",
+          image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/326888700.jpg?k=6b12dd7fc73f82ea2fe96586d667635de350814f3a33e842f4eb8b635b938990&o=",
+          address: "789 Rue Moderne, Lyon, France",
+          price: "125 €",
+          rating: 4.3,
+          description: "Design contemporain au centre-ville avec toit-terrasse"
+        },
+        {
+          id: 5,
+          name: "Villa Provençale",
+          image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+          address: "Chemin des Lavandes, Aix-en-Provence, France",
+          price: "175 €",
+          rating: 4.6,
+          description: "Authentique maison provençale avec jardin et piscine"
+        },
+        {
+          id: 6,
+          name: "Hôtel du Port",
+          image: "https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+          address: "Quai des Marins, Marseille, France",
+          price: "135 €",
+          rating: 4.2,
+          description: "Vue imprenable sur le Vieux-Port et la mer Méditerranée"
         }
+      ];
+      
+      setHotels(mockHotels);
+      setLoading(false);
+    };
 
-        const destinationId = locationData[0].dest_id;
-        // Étape 2 : récupérer la liste des hôtels avec destinationId
-        const hotelsUrl = new URL(
-          "https://booking-com15.p.rapidapi.com/api/v1/hotels/search"
-        );
-        hotelsUrl.search = new URLSearchParams({
-          dest_id: destinationId,
-          checkin_date: "2025-08-11",
-          checkout_date: "2025-08-12",
-          adults_number: "1",
-          order_by: "price",
-          units: "metric",
-          locale: "en-us",
-          currency: "EUR",
-          page_number: "1",
-          room_number: "1",
-        });
-
-        return fetch(hotelsUrl, {
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key": API_KEY,
-            "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
-          },
-        });
-      })
-      .then((res) => res.json())
-      .then((hotelData) => {
-        // console.log("Hotels data:", hotelData);
-
-        if (hotelData.result && hotelData.result.length > 0) {
-          const results = hotelData.result.map((hotel) => ({
-            id: hotel.hotel_id || Math.random(),
-            name: hotel.hotel_name || "Nom inconnu",
-            image:
-              hotel.main_photo_url ||
-              "https://via.placeholder.com/250x180?text=Pas+d'image",
-            address: hotel.address || "Adresse non disponible",
-            price: hotel.price || "Prix non disponible",
-          }));
-
-          setHotels(results);
-        } else {
-          setHotels([]);
-        }
-
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Erreur lors de la récupération des hôtels :", err);
-        setHotels([]);
-        setLoading(false);
-      });
+    fetchHotels();
   }, []);
 
-  if (loading) return <p>Chargement des hôtels...</p>;
-
-  if (hotels.length === 0)
-    return <p>Aucun hôtel trouvé pour cette recherche.</p>;
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <div className="spinner"></div>
+        <p>Recherche des meilleurs hôtels pour vous...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="grid">
-      {hotels.map((hotel) => (
-        <div key={hotel.id} className="card">
-          <img
-            src={hotel.image}
-            alt={hotel.name}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "https://via.placeholder.com/250x180?text=Pas+d'image";
-            }}
-          />
-          <h3>{hotel.name}</h3>
-          <p>{hotel.address}</p>
-          <span>{hotel.price}</span>
-          <button>Réserver</button>
-        </div>
-      ))}
+    <div className="app">
+      <header className="header">
+        <h1>Découvrez nos hôtels exceptionnels</h1>
+      </header>
+
+      <div className="grid">
+        {hotels.map((hotel) => (
+          <div key={hotel.id} className="card">
+            <div className="card-image">
+              <img
+                src={hotel.image}
+                alt={hotel.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://via.placeholder.com/300x200?text=Pas+d'image";
+                }}
+              />
+              <div className="rating">{hotel.rating} ★</div>
+            </div>
+            <div className="card-content">
+              <h3>{hotel.name}</h3>
+              <p className="address">{hotel.address}</p>
+              <p className="description">{hotel.description}</p>
+              <div className="price-container">
+                <span className="price">{hotel.price}</span>
+                <span className="per-night">par nuit</span>
+              </div>
+              <button className="reserve-btn">Réserver maintenant</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+export default App;
