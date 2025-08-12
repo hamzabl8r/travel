@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -24,10 +22,12 @@ const App = () => {
   return (
     <div>
       <Navbar toggleTheme={toggleTheme} theme={theme} />
-      
+
       <HeroSection />
       <MainSearch />
       <HotelList />
+      <Card />
+
       <Services />
       <FeedbackSection />
       <Footer />

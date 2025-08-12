@@ -8,7 +8,7 @@ const FeedBack = ( {feedback}) => {
         <div className="stars">
          
           {[...Array(5)].map((_, i) => (
-            <Star key={i} size={20}   color={i < feedback.rating ? "#FFD700" : "#ccc"} // étoiles actives/inactives
+            <Star key={i} size={20}   color={i < feedback.rating ? "#FFD700" : "#ccc"}
               fill={i < feedback.rating ? "#FFD700" : "none"} />
           ))}
         </div>
