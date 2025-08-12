@@ -6,7 +6,7 @@ import MainSearch from "./Components/MainSearch";
 import FeedbackSection from "./Components/FeedbackSection";
 import Services from "./Components/Services";
 import HotelList from "./Components/HotelList";
-
+import Card from "./Components/Card";
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -27,7 +27,6 @@ const App = () => {
       <MainSearch />
       <HotelList />
       <Card />
-
       <Services />
       <FeedbackSection />
       <Footer />
