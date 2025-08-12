@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Style/Navbar.css";
 import logo from "./assets/logo.png";
 import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ toggleTheme, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  );
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
 
   return (
     <nav className="navbar-container">
@@ -31,12 +19,10 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-right">
-        {/* The sidebar-toggle is for mobile view */}
         <div className="sidebar-toggle" onClick={toggleNavbar}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
         
-        {/* The dark mode toggle button, placed outside the main menu */}
         <button className="dark-mode-toggle" onClick={toggleTheme}>
           {theme === "dark" ? <FaSun /> : <FaMoon />}
         </button>

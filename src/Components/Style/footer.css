@@ -1,13 +1,14 @@
 
 body{
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 .footer {
  background: linear-gradient(135deg, #0f1b31, #1e3a5f, #0f1b31);
   color: white;
-  padding: 40px 20px;
   font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 20px;
   
 }
 .footer-top{
